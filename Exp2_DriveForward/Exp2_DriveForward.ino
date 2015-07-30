@@ -19,7 +19,18 @@ RedBotMotors motors; // Instantiate the motor control object. This only needs
 
 void setup()
 {
-  driveDistance(14);
+  driveDistance(5);
+  delay(500);
+  turnAngle(90);
+  driveDistance(5);
+  delay(500);
+  turnAngle(90);
+  driveDistance(5);
+  delay(500);
+  turnAngle(90);
+  driveDistance(5);
+  delay(500);
+  turnAngle(90);
 }
 
 void loop()
@@ -37,6 +48,17 @@ void driveDistance(int distance)
   delay(driveTime);
   motors.brake();
 }
+void turnAngle(int angle)
+{
+  int turningSpeed = 140; // degreees / second
 
+  long turningTime;
+  turningTime = (long) 1000 * angle / turningSpeed;
+
+  motors.rightMotor(-100); // Turn CCW at motorPower of 100
+  motors.leftMotor(-100);  // Turn CCW at motorPower of 100
+  delay(turningTime);      // turning Time
+  motors.brake();     // brake() motors
+}
 
 
